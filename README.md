@@ -14,6 +14,7 @@ I also added a References page with links to some of the libraries and tutorial 
 ## Installation
 - Git clone it
 - `npm install`
+- Get an API Key from OMDB and add it to `.env` (info below) if you want to use the Movie Search and Movie Quiz pages
 - `npm start`
 - `http://localhost:3000/`
 
