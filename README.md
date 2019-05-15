@@ -7,7 +7,7 @@ So far I made pages that can do things like
 - Use Ajax to submit a form to a Node endpoint
 - Display data with EJS templating
 
-And I'm currently building a Movie Quiz game that uses promises and `async/await` to execute several asynchronous API calls at once - one call for each OMDB movie IDs passed to the route.
+And I'm currently building a Movie Quiz game that uses promises and `async/await` to execute several asynchronous API calls at once - one call for each OMDB movie ID passed to the route.
 
 I also added a References page with links to some of the libraries and tutorial sites that helped me along the way.
 
