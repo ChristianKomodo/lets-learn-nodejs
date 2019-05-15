@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/style.css" />
+	<link rel="stylesheet" href="/stylesheets/movie-search-style.css" />
+</head>
+
+<body>
+	<% include ../partials/header %>
+	<p>Search for a Movie through the IMDB Database via the OMDB API</p>
+	<hr>
+	<br>
+
+	<div id="container" class="container">
+		<form id="movie-search-form">
+
+			<label for="title">Enter a Movie Title</label>
+			<input type="text" id="title" name="title" placeholder="Movie Title">
+
+			<label for="type">Movie or Television Series?</label>
+			<select id="type" name="type">
+				<option value="movie">Movie</option>
+				<option value="series">TV Series</option>
+			</select>
+
+			<input type="submit" value="Submit">
+
+		</form>
+	</div>
+
+	<script>
+
+		const form = document.forms.namedItem('movie-search-form');
+		if (form) {
+			form.addEventListener('submit', function (ev) {
+				ev.preventDefault();
+				var xhr = new XMLHttpRequest();
+				var data = {
+					title: this.title.value,
+					type: this.type.value
+				};
+				xhr.open('POST', '/movie-search/search', true);
+				xhr.onload = function() {
+					const responseData = JSON.parse(this.responseText);
+					const movieList = responseData.Search;
+					displayResultsHTML(movieList);
+				};
+				xhr.setRequestHeader('Content-Type', 'application/json');
+				xhr.send(JSON.stringify(data));
+			}, false);
+		}
+
+		function displayResultsHTML(results) {
+			const container = document.getElementById('container');
+			const list = document.createElement("UL");
+			results.map(movie => {
+				const listItem = document.createElement("LI");
+				listItem.innerText = movie.Title;
+				list.appendChild(listItem);
+			});
+			container.innerHTML = '<h3>Top 10 Movie Titles Returned From That Search</h3>';
+			container.appendChild(list);
+		}
+
+	</script>
+
+</body>
+
+</html>

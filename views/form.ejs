@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
+	<body>
+		<% include ../partials/header %>
+		<p>Type a name in and see it on the next page. Exciting!</p>
+		<hr>
+		<br>
+
+		<% if (response) { %>
+			<h2>Your response is <%= response %></h2>
+		<% } else { %>
+			<p>Submit the form to see your response here.</p>
+		<% } %>
+
+		<br><br>
+
+		<form action="form/submitted" method="post">
+			<label for="username">User Name: </label>
+			<input
+				id="username"
+				type="text"
+				name="username"
+				placeholder="Type a name here"
+			/>
+			<input type="submit" value="OK" />
+		</form>
+	</body>
+</html>

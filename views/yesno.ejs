@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/style.css" />
+	<link rel="stylesheet" href="/stylesheets/movie-search-style.css" />
+</head>
+
+<body>
+
+	<% include ../partials/header %>
+	<p>Get a random Yes or No animated Gif!</p>
+	<hr>
+	<br>
+	<h3>Your answer is: <span style="color: <%= color %>"><%= answer %></span></h3>
+	<br>
+	<img src="<%= image %>" alt="Random Yes or No Animated Gif">
+
+</body>
+
+</html>

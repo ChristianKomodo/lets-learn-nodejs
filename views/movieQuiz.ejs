@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/style.css" />
+	<link rel="stylesheet" href="/stylesheets/movie-search-style.css" />
+	<link rel="stylesheet" href="/stylesheets/accessible-autocomplete.min.css">
+</head>
+
+<body>
+	<% include ../partials/header %>
+	<p>Try and guess the movie title from just the plot!</p>
+
+	<div id="container" class="container">
+		<h2>Mystery Plot</h2>
+		<h3><%= plot %></h3>
+		<form id="movie-quiz-form">
+			<label for="my-autocomplete">Enter the Movie Title</label>
+			<div id="my-autocomplete-container"></div>
+			<!-- <label for="title">Enter the Movie Title</label>
+			<input type="text" id="title" name="title" placeholder="Movie Title"> -->
+			<input type="submit" value="That's My Final Answer">
+		</form>
+	</div>
+
+
+	<!-- Game Logic -->
+
+	<script type="text/javascript" src="js/accessible-autocomplete.min.js"></script>
+
+	<!-- Autocomplete movie titles (page 1 for now) -->
+	<script type="text/javascript">
+		function reqListener() {
+			const movieList = JSON.parse(this.responseText);
+			accessibleAutocomplete({
+				element: document.querySelector('#my-autocomplete-container'),
+				id: 'my-autocomplete', // To match it to the existing <label>.
+				minLength: 4,
+				source: movieList
+			})
+		}
+		var oReq = new XMLHttpRequest();
+		oReq.addEventListener("load", reqListener);
+		oReq.open("GET", "/movie-quiz/scrape");
+		oReq.send();
+	</script>
+
+</body>
+
+</html>

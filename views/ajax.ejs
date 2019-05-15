@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
+	<body>
+		<% include ../partials/header %>
+		<p>The first button displays some data via Ajax from the contents of a text file.  The second button is an example of hitting an endpoint via Express route.</p>
+		<hr>
+		<br>
+
+		<button id="on-page-ajax" onclick="getData()">Simple GET for the contents of test.txt</button>
+		<p><strong>Results:</strong> <span id="on-page-results">Results will go here.</span></p>
+
+		<br>
+
+		<button id="fromRoute" onclick="getRoute()">Data from Route</button>
+		<p><strong>Results:</strong> <span id="route-results">Results will go here.</span></p>
+
+
+		<!-- Script for test.txt GET method -->
+		<script>
+			const retrieveDataButton = document.getElementById('on-page-ajax');
+			const onPageResultsField = document.getElementById('on-page-results');
+			onPageResultsField.innerHTML = 'Ready for data from text file.';
+
+			const onPageDataButton = document.getElementById('route-results');
+			const routeResultsField = document.getElementById('route-results');
+			routeResultsField.innerHTML = 'Ready for data from route.';
+
+			function getData() {
+				function reqListener() {
+					onPageResultsField.innerHTML = this.responseText;
+					onPageResultsField.style.color = 'green';
+				}
+
+				var oReq = new XMLHttpRequest();
+				oReq.addEventListener('load', reqListener);
+				oReq.open('GET', 'test.txt');
+				oReq.send();
+			}
+		</script>
+
+		<!-- Script for the ajax route method -->
+		<script>
+			function getRoute() {
+
+				// function routeListener() {
+				// 	console.log('routeListener function');
+				// }
+
+				var xhr = new XMLHttpRequest();
+				// xhr.addEventListener('load', routeListener);   // Goes to the above function but I don't see how to send the response data there
+				var data = {
+					param1: 'value1',
+					param2: 'value2'
+				};
+				xhr.open('POST', '/ajax/ajax-received', true);
+				xhr.onload = function(data) {
+					const responseData = JSON.parse(this.responseText);
+					routeResultsField.innerHTML = responseData.pageData;
+					routeResultsField.style.color = 'green';
+				};
+				xhr.setRequestHeader('Content-Type', 'application/json');
+				xhr.send(JSON.stringify(data));
+			}
+		</script>
+	</body>
+</html>
