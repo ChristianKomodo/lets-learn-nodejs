@@ -18,18 +18,18 @@ I also added a References page with links to some of the libraries and tutorial 
 - `npm start`
 - `http://localhost:3000/`
 
-## Some Fun URLs in These Projects
-There is navigation at the top of all the pages to go to the various mini-projects or the references page, but here are some additional links and endpoints you might enjoy:
-
 ### OMDB API Key
 To use the movie search functionality in these projects, you need to add to this projcet an API Key from the [OMDb API](http://www.omdbapi.com/) website.  Create an empty file named `.env` in the root of this project after you clone it.  Put the following into that file:
 ```OMDB_API_KEY=123yourkeyhere123```
 ...but of course substitute your own API Key after the `OMDB_API_KEY=`.
 
+## Some Fun URLs in These Projects
+There is navigation at the top of all the pages to go to the various mini-projects or the references page, but here are some additional links and endpoints you might enjoy:
+
 ### API to Return Movie Plots
 Navigate to http://localhost:3000/movie-quiz/get-movies/tt0437086|tt0111161|tt0109506
 
-You can see that in the abive URL are several IMDB movie IDs separated by pipes (the | character).  String a few in there separated by pipes and it will return plots for all those movies.  You can find IMDB movie IDs in the address bar when viewing a movie on IMDB, for instance you can see the ID `tt0437086` when viewing the page about the movie [Alita, Battle Angel](https://www.imdb.com/title/tt0437086/).  The above URL will return an array of abbreviated plots for *Alita: Battle Angel*, *Shawshank Redeption* and *The Crow* respectively.  Those plots are used in the Movie Quiz game and the plots are abbreviated because the full plots commonly include giveaway clues or even the movie title itself.
+You can see that in the above URL are several IMDB movie IDs separated by pipes (the | character).  String a few in there separated by pipes and it will return plots for all those movies.  You can find IMDB movie IDs in the address bar when viewing a movie on IMDB, for instance you can see the ID `tt0437086` when viewing the page about the movie [Alita, Battle Angel](https://www.imdb.com/title/tt0437086/).  The above URL will return an array of abbreviated plots for *Alita: Battle Angel*, *Shawshank Redeption* and *The Crow* respectively.  Those plots are used in the Movie Quiz game and the plots are abbreviated because the full plots commonly include giveaway clues or even the movie title itself.
 
 ### Web Scraper
 Navigate to http://localhost:3000/movie-quiz/scrape to see the web scraper in action.
