@@ -19,7 +19,7 @@ I also added a References page with links to some of the libraries and tutorial 
 - `http://localhost:3000/`
 
 ### OMDB API Key
-To use the movie search functionality in these projects, you need to add to this projcet an API Key from the [OMDb API](http://www.omdbapi.com/) website.  Create an empty file named `.env` in the root of this project after you clone it.  Put the following into that file:
+To use the movie search functionality in these projects, you need to add to this project an API Key from the [OMDb API](http://www.omdbapi.com/) website.  Create an empty file named `.env` in the root of this project after you clone it.  Put the following into that file:
 ```OMDB_API_KEY=123yourkeyhere123```
 ...but of course substitute your own API Key after the `OMDB_API_KEY=`.
 
