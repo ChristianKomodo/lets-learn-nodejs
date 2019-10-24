@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Request = require('request');
+require('dotenv').config();
 
 // obdbapi API Key
 const apiKey = process.env.OMDB_API_KEY;
